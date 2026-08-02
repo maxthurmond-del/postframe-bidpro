@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PostFrame BidPro</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#8a3d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="BidPro">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+
+<style>
+:root{--bg:#edf1f4;--panel:#fff;--ink:#18212b;--muted:#687386;--brand:#8a3d12;--line:#d5dce4;--good:#1f7a4d;--shadow:0 8px 28px rgba(16,24,40,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{padding:18px 24px;background:linear-gradient(135deg,#5d2a0d,#9f4b1a);color:#fff;display:flex;justify-content:space-between;gap:16px;align-items:center}header h1{font-size:1.35rem;margin:0}header p{margin:4px 0 0;font-size:.88rem;opacity:.85}.wrap{max-width:1480px;margin:auto;padding:18px}.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;position:sticky;top:0;z-index:50;padding:8px;background:var(--bg);border-bottom:1px solid var(--line);scrollbar-width:thin}.tab-btn{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;color:var(--ink);padding:11px 15px;border-radius:10px;font-weight:800;white-space:nowrap;cursor:pointer;touch-action:manipulation;flex:0 0 auto;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent}.tab-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}.tab{display:none}.tab.active{display:block}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px}.card h2{margin:0;padding:14px 17px;background:#fafbfc;border-bottom:1px solid var(--line);font-size:1rem}.section{padding:16px 18px}.fields{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}.fields.three{grid-template-columns:repeat(3,minmax(160px,1fr))}.fields.two{grid-template-columns:repeat(2,minmax(180px,1fr))}label{display:block;font-size:.76rem;color:#4a5568;font-weight:800;margin-bottom:5px}input,select,textarea{width:100%;padding:10px 11px;border:1px solid #cbd3dc;border-radius:9px;font:inherit;background:#fff}input[readonly]{background:#f4f6f8;color:#566171}textarea{min-height:92px;resize:vertical}.subhead{font-weight:900;margin:2px 0 12px}.line{height:1px;background:var(--line);margin:16px 0}.btns{display:flex;flex-wrap:wrap;gap:8px}.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:800;cursor:pointer}.primary{background:var(--brand);color:white}.secondary{background:#e8edf2;color:#253142}.danger{background:#fbe8e5;color:#9a2b20}.small{font-size:.77rem;color:var(--muted)}.badge{background:#f3e5dc;color:#79340f;padding:5px 9px;border-radius:999px;font-size:.74rem;font-weight:900}.grid2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,.7fr);gap:16px}.summary{position:sticky;top:12px}.metric{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed #dfe4ea}.metric.total{font-size:1.16rem;border-top:2px solid #aab3be;border-bottom:0;margin-top:8px;padding-top:14px}.metric.total strong{color:var(--good)}.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:11px;border:1px solid var(--line);border-radius:10px;background:#f8fafb}.kpi span{font-size:.69rem;font-weight:900;color:var(--muted);display:block}.kpi strong{display:block;margin-top:4px}.takeoff{width:100%;border-collapse:collapse}.takeoff th,.takeoff td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.takeoff th{background:#fafbfc;color:#596579;font-size:.78rem}.takeoff td:last-child,.takeoff th:last-child{text-align:right}.price-row{display:grid;grid-template-columns:1.55fr .7fr .75fr;gap:9px;align-items:center;margin-bottom:9px}.price-row .name{font-size:.86rem;font-weight:800}.render-grid{display:grid;grid-template-columns:260px 1fr;gap:16px}.stage{background:linear-gradient(#dcecf8 0 66%,#d9d3c3 66%);border:1px solid var(--line);border-radius:12px;overflow:hidden;min-height:430px}svg{width:100%;height:430px;display:block}.template-list,.saved-list{display:grid;gap:10px}.list-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fafbfc}.list-item strong{display:block}.proposal{max-width:900px;margin:auto}.signature-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:55px}.sig{border-top:1px solid #555;padding-top:8px}.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.check{display:flex;gap:8px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:9px}.check input{width:auto}@media(max-width:980px){.grid2,.render-grid{grid-template-columns:1fr}.summary{position:static}.fields,.fields.three{grid-template-columns:repeat(2,1fr)}.option-grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.wrap{padding:10px}.fields,.fields.three,.fields.two,.option-grid{grid-template-columns:1fr}.price-row{grid-template-columns:1fr 1fr}.price-row .name{grid-column:1/-1}.kpis{grid-template-columns:1fr}.signature-grid{grid-template-columns:1fr;gap:40px}}@media print{header,.tabs,.no-print{display:none!important}.wrap{padding:0}.tab{display:none!important}.tab.print-target{display:block!important}.card{box-shadow:none;border:0}.section{padding:8px 0}}
+</style>
+</head>
+<body>
+<header><div><h1>PostFrame BidPro</h1><p>Post-frame estimating, takeoffs, proposals, renderings, and reusable templates</p></div><span class="badge">Contractor Edition</span></header>
+<div class="wrap">
+<div class="tabs no-print" role="tablist" aria-label="Estimator sections">
+<a href="#job" class="tab-btn active" data-tab="job" role="tab" aria-selected="true">1. Job Information</a><a href="#options" class="tab-btn" data-tab="options" role="tab" aria-selected="false">2. Building Options</a><a href="#takeoff" class="tab-btn" data-tab="takeoff" role="tab" aria-selected="false">3. Material Takeoff</a><a href="#pricing" class="tab-btn" data-tab="pricing" role="tab" aria-selected="false">4. Pricing</a><a href="#proposal" class="tab-btn" data-tab="proposal" role="tab" aria-selected="false">5. Proposal</a><a href="#preview" class="tab-btn" data-tab="preview" role="tab" aria-selected="false">6. 3D Preview</a>
+</div>
+
+<section id="job" class="tab active">
+<div class="card"><h2>Job Information</h2><div class="section">
+<div class="fields three"><div><label>Customer</label><input id="customer" value="Sunny Ridge Farms"></div><div><label>Project Name</label><input id="project" value="60 × 120 Farm Equipment Shop"></div><div><label>Job Address</label><input id="address" value="Tulare, California"></div></div>
+<div class="line"></div><div class="fields"><div><label>Building Type</label><select id="type"><option>Cold Storage</option><option selected>Insulated Shop</option><option>Livestock Barn</option><option>Commercial</option><option>Residential Barndominium</option></select></div><div><label>Width (ft)</label><input id="width" type="number" value="60"></div><div><label>Length (ft)</label><input id="length" type="number" value="120"></div><div><label>Clearance Height (ft)</label><input id="height" type="number" value="16"></div><div><label>Roof Pitch</label><select id="pitch"><option value=".083333">1/12</option><option value=".166667">2/12</option><option value=".25">3/12</option><option value=".333333" selected>4/12</option><option value=".416667">5/12</option><option value=".5">6/12</option><option value=".583333">7/12</option><option value=".666667">8/12</option><option value=".75">9/12</option><option value=".833333">10/12</option><option value=".916667">11/12</option><option value="1">12/12</option></select></div><div><label>Wind Exposure</label><select id="windExposure"><option>B</option><option selected>C</option><option>D</option></select></div><div><label>Ground Snow Load (psf)</label><input id="snowLoad" placeholder="Enter verified load"></div><div><label>18-inch Roof Overhang</label><input value="Automatic" readonly></div></div>
+<div class="line"></div><div class="btns no-print"><button class="btn primary" onclick="showTab('options')">Continue to Building Options</button><button class="btn secondary" onclick="saveBid()">Save Bid</button></div>
+</div></div>
+<div class="card"><h2>Saved Bids</h2><div class="section"><div id="savedBids" class="saved-list"></div></div></div>
+</section>
+
+<section id="options" class="tab">
+<div class="card"><h2>Building Options</h2><div class="section">
+<div class="subhead">Structural Framing</div><div class="fields"><div><label>Post Size</label><select id="postSize"><option selected>6×6</option><option>6×8</option><option>6×10</option><option>6×12</option></select></div><div><label>Post Spacing</label><select id="bayChoice"><option value="10">10′</option><option value="12" selected>12′</option><option value="other">Other</option></select></div><div id="customBayWrap" style="display:none"><label>Other Spacing (ft)</label><input id="customBay" type="number" value="8" step=".25"></div><div><label>Calculated Post Length</label><input id="postLength" readonly></div></div>
+<div class="line"></div><div class="subhead">Taylor Metal / Champion Metal</div><div class="fields"><div><label>Metal Roof</label><select id="roofProfile"><option value="3" selected>Ultra-Panel — 3′ coverage</option><option value="1.5">Snap-Loc — 18″ coverage</option></select></div><div><label>Roof Color</label><select id="roofColor"></select></div><div><label>Metal Siding</label><select id="wallProfile"><option value="ultra" selected>Ultra-Panel</option><option value="board">Metal Board & Batten</option></select></div><div><label>Siding Color</label><select id="wallColor"></select></div><div><label>Trim Color</label><select id="trimColor"></select></div></div>
+<div class="line"></div><div class="subhead">Openings and Concrete</div><div class="fields">
+<div><label>Overhead Doors</label><input id="ohDoors" type="number" value="3"></div><div id="ohDoorSizeWrap"><label>Overhead Door Size</label><select id="ohDoorSize"><option>8×8</option><option>9×8</option><option>10×10</option><option>12×12</option><option selected>14×14</option><option>16×16</option></select></div>
+<div><label>Hydraulic Doors</label><input id="hydDoors" type="number" value="0"></div><div id="hydDoorSizeWrap" style="display:none"><label>Hydraulic Door Size</label><select id="hydDoorSize"><option>20×16</option><option>24×16</option><option>30×18</option><option>36×18</option><option>40×20</option><option>50×20</option><option>60×20</option><option>Other</option></select></div>
+<div><label>Sliding Doors</label><input id="slideDoors" type="number" value="0"></div><div id="slideDoorSizeWrap" style="display:none"><label>Sliding Door Size</label><select id="slideDoorSize"><option>8×8</option><option>10×10</option><option>12×12</option><option>14×14</option><option>16×16</option><option>20×16</option><option>24×16</option><option>Other</option></select></div>
+<div><label>Entry Doors</label><input id="entryDoors" type="number" value="2"></div><div id="entryDoorSizeWrap"><label>Entry Door Size</label><select id="entryDoorSize"><option>3×6-8</option><option selected>3×7</option><option>3-6×7</option><option>Double 6×7</option><option>Other</option></select></div>
+<div><label>Windows</label><input id="windows" type="number" value="6"></div><div id="windowSizeWrap"><label>Window Size</label><select id="windowSize"><option>2×3</option><option selected>3×4</option><option>4×4</option><option>4×5</option><option>5×5</option><option>6×4</option><option>Other</option></select></div>
+<div><label>Concrete Slab</label><select id="slab"><option value="0">No Slab</option><option value="4" selected>4″ Slab</option><option value="6">6″ Slab</option></select></div></div>
+<div class="line"></div><div class="subhead">Additional Options</div><div class="option-grid"><label class="check"><input id="gutters" type="checkbox">Gutters & Downspouts</label><label class="check"><input id="wainscot" type="checkbox">Wainscot</label><label class="check"><input id="insulation" type="checkbox" checked>Insulation</label><label class="check"><input id="leanTo" type="checkbox">Lean-to</label><label class="check"><input id="porch" type="checkbox">Porch</label><label class="check"><input id="liner" type="checkbox">Interior Liner</label></div>
+<div class="line"></div><div><label>Scope Notes / Exclusions</label><textarea id="notes">Includes post-frame shell, concrete floor, post-hole concrete, selected doors and windows, erection labor, equipment mobilization, and engineering allowance. Excludes mass grading, utilities, HVAC, electrical, plumbing, fire sprinklers, and unforeseen soil conditions.</textarea></div>
+<div class="line"></div><div class="subhead">Reusable Templates</div><div class="fields three"><div><label>Template Name</label><input id="templateName" placeholder="Example: 60×120 Equipment Shop"></div><div style="align-self:end"><button class="btn primary no-print" onclick="saveTemplate()">Save as Template</button></div><div style="align-self:end"><button class="btn secondary no-print" onclick="showTab('takeoff')">View Material Takeoff</button></div></div><p class="small">Templates save dimensions, framing, metal profiles, colors, openings, and building options. Customer, address, pricing, and proposal notes are not saved.</p><div id="templateList" class="template-list"></div>
+</div></div>
+</section>
+
+<section id="takeoff" class="tab">
+<div class="card"><h2>Material Takeoff — Quantities Only</h2><div class="section"><div class="btns no-print" style="margin-bottom:14px"><button class="btn secondary" onclick="printTab('takeoff')">Print Material Takeoff</button><button class="btn primary" onclick="showTab('pricing')">Continue to Pricing</button></div>
+<h3>Lumber Package</h3><table class="takeoff"><thead><tr><th>Material</th><th>Quantity</th></tr></thead><tbody id="lumberTakeoff"></tbody></table>
+<h3>Steel Package</h3><table class="takeoff"><thead><tr><th>Material</th><th>Quantity</th></tr></thead><tbody id="steelTakeoff"></tbody></table>
+<h3>Concrete</h3><table class="takeoff"><thead><tr><th>Material</th><th>Quantity</th></tr></thead><tbody id="concreteTakeoff"></tbody></table>
+<h3>Doors & Windows</h3><table class="takeoff"><thead><tr><th>Material</th><th>Quantity</th></tr></thead><tbody id="openingTakeoff"></tbody></table>
+</div></div></section>
+
+<section id="pricing" class="tab">
+<div class="grid2"><div class="card"><h2>Internal Pricing</h2><div class="section"><div class="small" style="margin-bottom:12px">Quantities are calculated automatically. Enter your unit price or lump-sum cost.</div><div id="priceRows"></div><div class="line"></div><div class="fields three"><div><label>Labor Cost</label><input id="laborCost" type="number" value="68400"></div><div><label>Travel Cost</label><input id="travelCost" type="number" value="0"></div><div><label>Equipment / Mobilization</label><input id="equipmentCost" type="number" value="14500"></div><div><label>Delivery / Freight</label><input id="deliveryCost" type="number" value="6500"></div><div><label>Engineering / Permit</label><input id="engineeringCost" type="number" value="6500"></div><div><label>Miscellaneous Cost</label><input id="miscCost" type="number" value="3500"></div><div><label>Optional Markup (%)</label><input id="markupPct" type="number" value="0"></div><div><label>Tax (%)</label><input id="taxPct" type="number" value="0"></div><div><label>Deposit Required (%)</label><input id="depositPct" type="number" value="20"></div></div></div></div>
+<div class="card summary"><h2>Bid Summary</h2><div class="section"><div class="kpis"><div class="kpi"><span>BUILDING SIZE</span><strong id="sizeKpi">—</strong></div><div class="kpi"><span>PRICE / SQ FT</span><strong id="psfKpi">—</strong></div><div class="kpi"><span>POSTS</span><strong id="postsKpi">—</strong></div><div class="kpi"><span>TRUSSES</span><strong id="trussesKpi">—</strong></div></div><div class="metric"><span>Lumber Package</span><strong id="lumberTotal">$0</strong></div><div class="metric"><span>Steel Package</span><strong id="steelTotal">$0</strong></div><div class="metric"><span>Concrete</span><strong id="concreteTotal">$0</strong></div><div class="metric"><span>Doors & Windows</span><strong id="openingsTotal">$0</strong></div><div class="metric"><span>Labor / Equipment / Other</span><strong id="otherTotal">$0</strong></div><div class="metric"><span>Total Cost</span><strong id="costTotal">$0</strong></div><div class="metric"><span>Markup</span><strong id="markupOut">$0</strong></div><div class="metric"><span>Tax</span><strong id="taxOut">$0</strong></div><div class="metric total"><span>Out-the-Door Price</span><strong id="grandTotal">$0</strong></div><div class="metric"><span>Final Price / Sq Ft</span><strong id="finalPsf">$0.00</strong></div><div class="metric"><span>Required Deposit</span><strong id="depositOut">$0</strong></div><div class="btns no-print" style="margin-top:14px"><button class="btn primary" onclick="showTab('proposal')">Create Proposal</button><button class="btn secondary" onclick="saveBid()">Save Bid</button></div></div></div></div>
+</section>
+
+<section id="proposal" class="tab">
+<div class="card proposal"><h2>Customer Proposal</h2><div class="section"><div class="btns no-print" style="margin-bottom:15px"><button class="btn primary" onclick="printTab('proposal')">Print Proposal</button><button class="btn secondary" onclick="showTab('preview')">View Rendering</button></div><h1 id="proposalProject">Post-Frame Construction Proposal</h1><p id="proposalMeta"></p><div class="line"></div><h3>Project Description</h3><p id="proposalDescription"></p><h3>Included Scope</h3><p id="proposalNotes"></p><div class="metric total"><span>Price After Markup</span><strong><span id="proposalTotal">$0</span> <small>plus tax</small></strong></div><div class="metric"><span>Deposit Due</span><strong id="proposalDeposit">$0</strong></div><div class="signature-grid"><div class="sig">Customer Signature / Date</div><div class="sig">Contractor Signature / Date</div></div></div></div>
+</section>
+
+<section id="preview" class="tab">
+<div class="card"><h2>3D Building Preview</h2><div class="section render-grid"><div><div class="fields two" style="grid-template-columns:1fr"><div><label>View</label><select id="renderView"><option value="perspective">3D Perspective</option><option value="front">Front Elevation</option></select></div></div><div class="btns no-print" style="margin-top:12px"><button class="btn primary" onclick="renderBuilding()">Update Rendering</button><button class="btn secondary" onclick="downloadRendering()">Save PNG</button></div><p class="small">Concept rendering reflects the selected dimensions, pitch, colors, openings, and 18-inch roof overhang.</p></div><div class="stage"><svg id="buildingRender" viewBox="0 0 900 430"></svg></div></div></div>
+</section>
+</div>
+<script>
+const colors=[['Polar White','#f4f3ec'],['Glacier White','#e9ece8'],['Stone White','#ddd9cc'],['Ivory','#e8dfc5'],['Light Stone','#d7c9a6'],['Sandstone','#c9b58f'],['Hickory','#8b6548'],['Ash Grey','#aeb2ae'],['Sterling Grey','#7c8588'],['Charcoal Grey','#4c5356'],['Tile Red','#8f3d32'],['Tahoe Blue','#315775'],['Pacific Blue','#244a67'],['Sage Green','#697b63'],['Forest Green','#36523c'],['Pine Green','#294538'],['Desert Brown','#5b4033'],['Cocoa Brown','#49352d'],['Kodiak Brown','#392d28'],['Weathered Copper','#66705f'],['Obsidian Black','#1f2325'],['Copper Penny','#a56d45'],['Satin Black','#242526'],['ZINCALUME® Plus','#aeb5b2'],['Galvanized G-90','#b9bdba']];
+['roofColor','wallColor','trimColor'].forEach((id,i)=>{const s=document.getElementById(id);colors.forEach(([n,v])=>s.add(new Option(n,v)));s.value=i===0?'#4c5356':i===1?'#ddd9cc':'#f4f3ec'});
+const designIds=['type','width','length','height','pitch','windExposure','snowLoad','postSize','bayChoice','customBay','roofProfile','roofColor','wallProfile','wallColor','trimColor','ohDoors','ohDoorSize','hydDoors','hydDoorSize','slideDoors','slideDoorSize','entryDoors','entryDoorSize','windows','windowSize','slab','gutters','wainscot','insulation','leanTo','porch','liner'];
+const allIds=['customer','project','address','notes',...designIds,'laborCost','travelCost','equipmentCost','deliveryCost','engineeringCost','miscCost','markupPct','taxPct','depositPct'];
+const n=id=>parseFloat(document.getElementById(id).value)||0,v=id=>document.getElementById(id).value,money=x=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(x),money2=x=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(x);
+function showTab(id,scroll=true){
+  const target=document.getElementById(id);
+  if(!target)return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===target));
+  document.querySelectorAll('.tab-btn').forEach(x=>{
+    const active=x.dataset.tab===id;
+    x.classList.toggle('active',active);
+    x.setAttribute('aria-selected',active?'true':'false');
+  });
+  calculate();
+  if(scroll){
+    const tabs=document.querySelector('.tabs');
+    window.scrollTo({top:Math.max(0,tabs.offsetTop-4),behavior:'auto'});
+  }
+}
+function activateTabFromHash(){
+  const id=(location.hash||'#job').slice(1);
+  if(document.getElementById(id)?.classList.contains('tab')) showTab(id,false);
+}
+document.querySelectorAll('.tab-btn').forEach(link=>{
+  link.addEventListener('click',event=>{
+    event.preventDefault();
+    const id=link.dataset.tab;
+    history.replaceState(null,'','#'+id);
+    showTab(id,true);
+  });
+});
+window.addEventListener('hashchange',activateTabFromHash);
+function spacing(){return v('bayChoice')==='other'?Math.max(1,n('customBay')):n('bayChoice')}
+function layout(dim){const max=spacing(),bays=Math.max(1,Math.ceil(dim/max));return{bays,actual:dim/bays,max}}
+function takeoff(){
+  const w=n('width'),l=n('length'),h=n('height'),p=n('pitch'),ov=1.5;
+  const L=layout(l),W=layout(w),perimeter=2*(l+w);
+  const rise=w/2*p,rafter=Math.hypot(w/2,rise),sheetLen=rafter+ov*Math.sqrt(1+p*p),roofRun=l+3,coverage=n('roofProfile');
+  const sheetsSide=Math.ceil(roofRun/coverage),roofSheets=sheetsSide*2,roofArea=2*sheetLen*roofRun;
+  const rectangularWallArea=perimeter*h,gableArea=w*rise,wallArea=rectangularWallArea+gableArea;
+  const posts=2*(L.bays+1)+2*(W.bays+1)-4,trusses=L.bays*2,postLen=h+6;
+  const purlinRows=Math.ceil(sheetLen/2)+1,purlins=purlinRows*L.bays*2,purlinLen=L.actual+2,purlinLF=purlins*purlinLen;
+  const girtRows=Math.ceil(h/2)+1;
+  const sideGirts=girtRows*L.bays*2,endGirts=girtRows*W.bays*2,girts=sideGirts+endGirts;
+  const sideGirtLen=L.actual+2,endGirtLen=W.actual+2,girtLF=sideGirts*sideGirtLen+endGirts*endGirtLen;
+  const splashLF=perimeter,splashPieces=Math.ceil(splashLF/16);
+  const floor=w*l,slabInches=n('slab');
+  const walkDoorQty=n('entryDoors');
+  const walkDoorJambPosts=walkDoorQty*2;
+  const walkDoorJambPostLength=12;
+  const ohDoorQty=n('ohDoors');
+  const ohSizeText=v('ohDoorSize');
+  const ohHeightMatch=ohSizeText.match(/(?:×|x)\s*(\d+)(?:[-′' ]?(\d+))?/);
+  const ohDoorHeight=ohHeightMatch?Number(ohHeightMatch[1])+(ohHeightMatch[2]?Number(ohHeightMatch[2])/12:0):0;
+  const ohDoorJambPosts=ohDoorQty*2;
+  const ohDoorJambPostLength=ohDoorHeight+6;
+  const doorJambPosts=walkDoorJambPosts+ohDoorJambPosts;
+  const postHoles=posts+doorJambPosts;
+  const holeYards=postHoles*.5;
+  const totalPosts=posts+doorJambPosts;
+  const floorYards=slabInches?floor*(slabInches/12)/27:0;
+  const wallCoverage=v('wallProfile')==='ultra'?3:1.5;
+  const wallSheetsLong=Math.ceil(l/wallCoverage)*2,wallSheetsEnds=Math.ceil(w/wallCoverage)*2,wallSheets=wallSheetsLong+wallSheetsEnds;
+  const ridgeLF=l+3,eaveTrimLF=2*(l+3),gableTrimLF=4*sheetLen,baseTrimLF=perimeter,cornerTrimLF=4*h;
+  const roofClosureLF=2*(l+3),wallClosureLF=perimeter;
+  const roofFasteners=Math.ceil(roofArea/3),wallFasteners=Math.ceil(wallArea/3);
+  const roofUnderlayment=roofArea,wallWrap=wallArea;
+  return{w,l,h,L,W,perimeter,rise,rafter,sheetLen,roofRun,coverage,sheetsSide,roofSheets,roofArea,rectangularWallArea,gableArea,wallArea,posts,totalPosts,trusses,postLen,walkDoorQty,walkDoorJambPosts,walkDoorJambPostLength,ohDoorQty,ohDoorHeight,ohDoorJambPosts,ohDoorJambPostLength,doorJambPosts,postHoles,purlinRows,purlins,purlinLen,purlinLF,girtRows,sideGirts,endGirts,girts,sideGirtLen,endGirtLen,girtLF,splashLF,splashPieces,floor,slabInches,holeYards,floorYards,wallCoverage,wallSheetsLong,wallSheetsEnds,wallSheets,ridgeLF,eaveTrimLF,gableTrimLF,baseTrimLF,cornerTrimLF,roofClosureLF,wallClosureLF,roofFasteners,wallFasteners,roofUnderlayment,wallWrap}
+}
+const priceDefs=[['post','Pressure-Treated Posts','ea',265],['truss','Trusses','ea',725],['purlin','Doug Fir 2×6 Purlins','ea',28],['otherLumber','Other Lumber / Framing','sq ft',5.75],['roofSteel','Roof Steel','sq ft',2.65],['wallSteel','Wall Steel','sq ft',2.55],['floorConcrete','Concrete Floor','lump sum',54000],['holeConcrete','Post-Hole Concrete','cu yd',175],['ohDoor','Overhead Doors','ea',5800],['hydDoor','Hydraulic Doors','ea',18000],['slideDoor','Sliding Doors','ea',3800],['entryDoor','Entry Doors','ea',950],['window','Windows','ea',650]];
+function qtyFor(k,t){return{post:t.totalPosts,truss:t.trusses,purlin:t.purlins,otherLumber:t.floor,roofSteel:t.roofArea,wallSteel:t.wallArea,floorConcrete:n('slab')>0?1:0,holeConcrete:t.holeYards,ohDoor:n('ohDoors'),hydDoor:n('hydDoors'),slideDoor:n('slideDoors'),entryDoor:n('entryDoors'),window:n('windows')}[k]||0}
+function buildPriceRows(){document.getElementById('priceRows').innerHTML=priceDefs.map(([k,name,unit,def])=>`<div class="price-row"><div class="name">${name}</div><input id="qty_${k}" readonly><input id="price_${k}" type="number" step=".01" value="${def}" aria-label="${name} price"></div>`).join('');priceDefs.forEach(([k])=>document.getElementById('price_'+k).addEventListener('input',calculate))}
+buildPriceRows();
+function calculate(){document.getElementById('customBayWrap').style.display=v('bayChoice')==='other'?'block':'none';const t=takeoff();document.getElementById('postLength').value=`${t.postLen.toFixed(0)}′ (4′ embedment + 2′ above)`;priceDefs.forEach(([k,,unit])=>{const q=qtyFor(k,t);document.getElementById('qty_'+k).value=unit==='sq ft'?Math.round(q).toLocaleString():unit==='cu yd'?q.toFixed(1):Math.round(q)});
+const lumberRows=[
+[`Pressure-treated ${v('postSize')}×${t.postLen.toFixed(0)}′ building posts`,`${t.posts} pcs`],
+...(t.walkDoorJambPosts?[[`Pressure-treated 4×6×12′ walk-in door jamb posts`,`${t.walkDoorJambPosts} pcs — 2 per walk-in door`]]:[]),
+...(t.ohDoorJambPosts?[[`Pressure-treated 4×6×${t.ohDoorJambPostLength.toFixed(1)}′ overhead-door jamb posts`,`${t.ohDoorJambPosts} pcs — 2 per overhead door (${t.ohDoorHeight.toFixed(1)}′ door height + 2′ above + 4′ embedment)`]]:[]),
+[`Total pressure-treated posts`,`${t.totalPosts} pcs`],
+[`Trusses — one outside each gable and paired at interior post lines`,`${t.trusses} pcs`],
+[`Doug Fir 2×6×${t.purlinLen.toFixed(1)}′ purlins`,`${t.purlins} pcs / ${Math.round(t.purlinLF).toLocaleString()} LF (${t.purlinRows} rows per side @ 2′ max O.C.)`],
+[`Doug Fir 2×6 sidewall girts`,`${t.sideGirts} pcs @ ${t.sideGirtLen.toFixed(1)}′`],
+[`Doug Fir 2×6 endwall girts`,`${t.endGirts} pcs @ ${t.endGirtLen.toFixed(1)}′`],
+[`Total wall girts`,`${t.girts} pcs / ${Math.round(t.girtLF).toLocaleString()} LF (${t.girtRows} rows)`],
+[`Pressure-treated splash plank`,`${t.splashPieces} pcs 2×8×16′ / ${Math.round(t.splashLF)} LF`],
+['Door and window framing','Final headers, jambs, and blocking depend on opening sizes']
+];
+const rp=v('roofProfile')==='3'?'Ultra-Panel':'Snap-Loc',wp=v('wallProfile')==='ultra'?'Ultra-Panel':'Metal Board & Batten';const steelRows=[
+[`${rp} roof sheets — ${document.getElementById('roofColor').selectedOptions[0].text}`,`${t.roofSheets} pcs (${t.sheetsSide}/side) @ ${t.sheetLen.toFixed(1)}′`],
+[`${wp} wall sheets — ${document.getElementById('wallColor').selectedOptions[0].text}`,`${t.wallSheets} estimated pcs (${t.wallSheetsLong} sidewall + ${t.wallSheetsEnds} endwall) @ ${t.h.toFixed(1)}′ nominal`],
+['Roof steel area',`${Math.round(t.roofArea).toLocaleString()} sq ft`],
+['Wall steel area',`${Math.round(t.wallArea).toLocaleString()} sq ft`],
+['Ridge cap',`${Math.ceil(t.ridgeLF)} LF — ${Math.ceil(t.ridgeLF/12)} pieces @ 12′`],
+['Eave trim',`${Math.ceil(t.eaveTrimLF)} LF — ${Math.ceil(t.eaveTrimLF/12)} pieces @ 12′`],
+['Gable / rake trim',`${Math.ceil(t.gableTrimLF)} LF — ${Math.ceil(t.gableTrimLF/12)} pieces @ 12′`],
+['Base trim / rat guard',`${Math.ceil(t.baseTrimLF)} LF — ${Math.ceil(t.baseTrimLF/12)} pieces @ 12′`],
+['Corner trim',`${Math.ceil(t.cornerTrimLF)} LF — ${Math.ceil(t.cornerTrimLF/12)} pieces @ 12′`],
+['Roof closures',`${Math.ceil(t.roofClosureLF)} LF`],
+['Wall closures',`${Math.ceil(t.wallClosureLF)} LF`],
+['Roof fasteners',`${t.roofFasteners.toLocaleString()} estimated`],
+['Wall fasteners',`${t.wallFasteners.toLocaleString()} estimated`],
+['Roof underlayment / condensation control',`${Math.ceil(t.roofUnderlayment).toLocaleString()} sq ft`],
+['Wall wrap / insulation facing',`${Math.ceil(t.wallWrap).toLocaleString()} sq ft`]
+];
+const concreteRows=[['Post holes',`${t.postHoles} total — ${t.posts} building posts + ${t.doorJambPosts} door jamb posts`],['Post-hole concrete — 0.5 yd³ per hole',`${t.holeYards.toFixed(1)} yd³`],['Concrete slab',t.slabInches?`${Math.round(t.floor).toLocaleString()} sq ft / ${t.floorYards.toFixed(1)} yd³ @ ${t.slabInches}″`:'No slab']];const openingRows=[];if(n('ohDoors'))openingRows.push(['Overhead doors',`${n('ohDoors')} ea — ${v('ohDoorSize')}`]);if(n('hydDoors'))openingRows.push(['Hydraulic doors',`${n('hydDoors')} ea — ${v('hydDoorSize')}`]);if(n('slideDoors'))openingRows.push(['Sliding doors',`${n('slideDoors')} ea — ${v('slideDoorSize')}`]);if(n('entryDoors'))openingRows.push(['Entry doors',`${n('entryDoors')} ea — ${v('entryDoorSize')}`]);if(n('windows'))openingRows.push(['Windows',`${n('windows')} ea — ${v('windowSize')}`]);if(!openingRows.length)openingRows.push(['Openings','None']);fillRows('lumberTakeoff',lumberRows);fillRows('steelTakeoff',steelRows);fillRows('concreteTakeoff',concreteRows);fillRows('openingTakeoff',openingRows);
+let groups={lumber:0,steel:0,concrete:0,openings:0};priceDefs.forEach(([k])=>{const total=qtyFor(k,t)*n('price_'+k);if(['post','truss','purlin','otherLumber'].includes(k))groups.lumber+=total;else if(['roofSteel','wallSteel'].includes(k))groups.steel+=total;else if(['floorConcrete','holeConcrete'].includes(k))groups.concrete+=total;else groups.openings+=total});const other=n('laborCost')+n('travelCost')+n('equipmentCost')+n('deliveryCost')+n('engineeringCost')+n('miscCost');const costTotal=groups.lumber+groups.steel+groups.concrete+groups.openings+other;const markup=costTotal*n('markupPct')/100;const taxable=costTotal+markup;const tax=taxable*n('taxPct')/100;const total=taxable+tax,psf=t.floor?total/t.floor:0,deposit=total*n('depositPct')/100;document.getElementById('sizeKpi').textContent=`${t.w}' × ${t.l}' × ${t.h}'`;document.getElementById('psfKpi').textContent=money2(psf);document.getElementById('postsKpi').textContent=t.totalPosts;document.getElementById('trussesKpi').textContent=t.trusses;document.getElementById('lumberTotal').textContent=money(groups.lumber);document.getElementById('steelTotal').textContent=money(groups.steel);document.getElementById('concreteTotal').textContent=money(groups.concrete);document.getElementById('openingsTotal').textContent=money(groups.openings);document.getElementById('otherTotal').textContent=money(other);document.getElementById('costTotal').textContent=money(costTotal);document.getElementById('markupOut').textContent=money(markup);document.getElementById('taxOut').textContent=money(tax);document.getElementById('grandTotal').textContent=money(total);document.getElementById('finalPsf').textContent=money2(psf);document.getElementById('depositOut').textContent=money(deposit);document.getElementById('proposalProject').textContent=v('project')||'Post-Frame Construction Proposal';document.getElementById('proposalMeta').textContent=[v('customer'),v('address'),`${t.w}' × ${t.l}' × ${t.h}' clearance`,`${document.getElementById('pitch').selectedOptions[0].text} pitch`,`Wind Exposure ${v('windExposure')}`,v('snowLoad')?`${v('snowLoad')} psf ground snow`:null].filter(Boolean).join(' • ');document.getElementById('proposalDescription').textContent=`Construct a ${v('type').toLowerCase()} post-frame building with ${v('postSize')} pressure-treated posts, ${spacing()}′ maximum post spacing, ${rp} roofing, and ${wp} siding.`;document.getElementById('proposalNotes').textContent=v('notes');document.getElementById('proposalTotal').textContent=money(taxable);document.getElementById('proposalDeposit').textContent=money(taxable*n('depositPct')/100);renderBuilding();return{t,costTotal,markup,tax,total,psf,deposit}}
+
+function toggleOpeningSizes(){[['ohDoors','ohDoorSizeWrap'],['hydDoors','hydDoorSizeWrap'],['slideDoors','slideDoorSizeWrap'],['entryDoors','entryDoorSizeWrap'],['windows','windowSizeWrap']].forEach(([countId,wrapId])=>{const w=document.getElementById(wrapId);if(w)w.style.display=n(countId)>0?'block':'none'})}
+function fillRows(id,rows){document.getElementById(id).innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}
+function getData(ids){const o={};ids.forEach(id=>{const e=document.getElementById(id);o[id]=e.type==='checkbox'?e.checked:e.value});return o}function setData(o){Object.entries(o).forEach(([id,val])=>{const e=document.getElementById(id);if(e){if(e.type==='checkbox')e.checked=!!val;else e.value=val}});calculate()}
+function saveTemplate(){const name=v('templateName').trim()||`${v('width')}×${v('length')} ${v('type')}`;const list=JSON.parse(localStorage.getItem('pfTemplates')||'[]');list.unshift({id:Date.now(),name,data:getData(designIds)});localStorage.setItem('pfTemplates',JSON.stringify(list.slice(0,30)));document.getElementById('templateName').value='';renderTemplates()}
+function renderTemplates(){const list=JSON.parse(localStorage.getItem('pfTemplates')||'[]');document.getElementById('templateList').innerHTML=list.length?list.map(x=>`<div class="list-item"><div><strong>${esc(x.name)}</strong><span class="small">${x.data.width}′ × ${x.data.length}′ × ${x.data.height}′ • ${x.data.postSize} posts</span></div><div class="btns"><button class="btn secondary" onclick="loadTemplate(${x.id})">Load</button><button class="btn danger" onclick="deleteTemplate(${x.id})">Delete</button></div></div>`).join(''):'<p class="small">No templates saved yet.</p>'}
+function loadTemplate(id){const x=JSON.parse(localStorage.getItem('pfTemplates')||'[]').find(a=>a.id===id);if(x)setData(x.data)}function deleteTemplate(id){localStorage.setItem('pfTemplates',JSON.stringify(JSON.parse(localStorage.getItem('pfTemplates')||'[]').filter(x=>x.id!==id)));renderTemplates()}
+function saveBid(){const c=calculate(),list=JSON.parse(localStorage.getItem('pfBids')||'[]');list.unshift({id:Date.now(),date:new Date().toLocaleDateString(),name:v('project')||'Untitled',customer:v('customer')||'Unnamed',total:c.total,data:getData(allIds)});localStorage.setItem('pfBids',JSON.stringify(list.slice(0,40)));renderBids()}
+function renderBids(){const list=JSON.parse(localStorage.getItem('pfBids')||'[]');document.getElementById('savedBids').innerHTML=list.length?list.map(x=>`<div class="list-item"><div><strong>${esc(x.name)}</strong><span class="small">${esc(x.customer)} • ${x.date} • ${money(x.total)}</span></div><div class="btns"><button class="btn secondary" onclick="loadBid(${x.id})">Open</button><button class="btn danger" onclick="deleteBid(${x.id})">Delete</button></div></div>`).join(''):'<p class="small">No saved bids yet.</p>'}function loadBid(id){const x=JSON.parse(localStorage.getItem('pfBids')||'[]').find(a=>a.id===id);if(x){setData(x.data);showTab('job')}}function deleteBid(id){localStorage.setItem('pfBids',JSON.stringify(JSON.parse(localStorage.getItem('pfBids')||'[]').filter(x=>x.id!==id)));renderBids()}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function printTab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('print-target',x.id===id));window.print();document.querySelectorAll('.tab').forEach(x=>x.classList.remove('print-target'))}
+function E(n,a={}){const e=document.createElementNS('http://www.w3.org/2000/svg',n);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e}function P(svg,p,f,s='#333',sw=2){svg.appendChild(E('polygon',{points:p.map(x=>x.join(',')).join(' '),fill:f,stroke:s,'stroke-width':sw,'stroke-linejoin':'round'}))}function L(svg,x1,y1,x2,y2,s='#555',sw=2){svg.appendChild(E('line',{x1,y1,x2,y2,stroke:s,'stroke-width':sw}))}function R(svg,x,y,w,h,f,s='#333',sw=2){svg.appendChild(E('rect',{x,y,width:w,height:h,fill:f,stroke:s,'stroke-width':sw,rx:2}))}function T(svg,x,y,txt,size=18){const e=E('text',{x,y,'font-size':size,'text-anchor':'middle',fill:'#26313d','font-family':'Arial','font-weight':'700'});e.textContent=txt;svg.appendChild(e)}
+function renderBuilding(){const svg=document.getElementById('buildingRender');svg.innerHTML='';const t=takeoff(),wall=v('wallColor'),roof=v('roofColor'),trim=v('trimColor'),frontW=390,frontH=Math.max(105,Math.min(180,t.h/t.w*frontW)),rr=Math.max(35,Math.min(105,t.rise/t.w*frontW)),left=150,base=345,eave=base-frontH,ridgeX=left+frontW/2,ridgeY=eave-rr,dx=Math.max(115,Math.min(300,t.l/t.w*175)),dy=-105;if(v('renderView')==='front'){const sc=Math.min(620/(t.w+3),235/(t.h+t.rise)),bw=t.w*sc,bh=t.h*sc,rg=t.rise*sc,cx=450,le=cx-bw/2,ba=345,ea=ba-bh,ri=ea-rg;P(svg,[[le,ba],[le,ea],[cx,ri],[le+bw,ea],[le+bw,ba]],wall);L(svg,le-8,ea,cx,ri,roof,16);L(svg,cx,ri,le+bw+8,ea,roof,16);drawOpenings(svg,le,ea,bw,bh,ba,trim);T(svg,450,405,`${t.w}' wide × ${t.h}' clearance`)}else{P(svg,[[left+frontW,eave],[left+frontW+dx,eave+dy],[left+frontW+dx,base+dy],[left+frontW,base]],shade(wall,-15));P(svg,[[left,base],[left,eave],[ridgeX,ridgeY],[left+frontW,eave],[left+frontW,base]],wall);P(svg,[[left-5,eave],[ridgeX,ridgeY],[ridgeX+dx,ridgeY+dy],[left+dx-5,eave+dy]],shade(roof,12));P(svg,[[ridgeX,ridgeY],[left+frontW+5,eave],[left+frontW+dx+5,eave+dy],[ridgeX+dx,ridgeY+dy]],roof);L(svg,left,eave,ridgeX,ridgeY,trim,5);L(svg,ridgeX,ridgeY,left+frontW,eave,trim,5);drawOpenings(svg,left,eave,frontW,frontH,base,trim);for(let x=left+18;x<left+frontW;x+=18)L(svg,x,eave,x,base,shade(wall,-28),1);for(let i=1;i<12;i++){const a=i/12;L(svg,left+(ridgeX-left)*a,eave+(ridgeY-eave)*a,left+dx-5+(ridgeX-left)*a,eave+dy+(ridgeY-eave)*a,shade(roof,-25),1)}T(svg,450,405,`${t.w}' W × ${t.l}' L × ${t.h}' clearance • ${v('roofProfile').includes('Snap')?'Snap-Loc':'Ultra-Panel'} roof • ${v('wallProfile')==='board'?'Board & Batten':'Ultra-Panel'} siding`)}T(svg,450,28,v('project')||'Post-Frame Building Concept',21)}
+function drawOpenings(svg,left,eave,bw,bh,base,trim){const count=Math.min(3,n('ohDoors')),dw=Math.min(94,bw*.23),dh=Math.min(120,bh*.72);for(let i=0;i<count;i++){const x=left+bw*(.08+i*(.82/Math.max(1,count)));R(svg,x,base-dh,dw,dh,'#b8bec3',trim,3)}for(let i=0;i<Math.min(2,n('entryDoors'));i++)R(svg,left+bw*.73+i*34,base-72,27,72,'#d9dce0',trim,3);for(let i=0;i<Math.min(4,n('windows'));i++)R(svg,left+bw*(.15+i*.18),eave+bh*.25,26,22,'#82adc1',trim,3)}function shade(hex,a){let c=hex.slice(1),n=parseInt(c,16),r=Math.max(0,Math.min(255,(n>>16)+a)),g=Math.max(0,Math.min(255,((n>>8)&255)+a)),b=Math.max(0,Math.min(255,(n&255)+a));return`rgb(${r},${g},${b})`}
+function downloadRendering(){renderBuilding();const svg=document.getElementById('buildingRender'),data=new XMLSerializer().serializeToString(svg),canvas=document.createElement('canvas');canvas.width=1800;canvas.height=860;const ctx=canvas.getContext('2d'),img=new Image();img.onload=()=>{ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);const a=document.createElement('a');a.download=(v('project')||'rendering').replace(/[^a-z0-9]+/gi,'-')+'.png';a.href=canvas.toDataURL();a.click()};img.src=URL.createObjectURL(new Blob([data],{type:'image/svg+xml'}))}
+[...document.querySelectorAll('input,select,textarea')].forEach(e=>e.addEventListener('input',()=>{toggleOpeningSizes();calculate()}));toggleOpeningSizes();calculate();renderTemplates();renderBids();activateTabFromHash();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(err => console.warn('Service worker registration failed:', err));
+  });
+}
+</script>
+</body></html>
